@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b1220" />
+    <title>กรอกรหัสเพื่อดำเนินการต่อ</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: "Segoe UI", Tahoma, sans-serif;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        --muted: #a8b4c7;
+        --line: rgba(183, 199, 225, 0.18);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-width: 320px;
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        color: #f5f8ff;
+        background:
+          radial-gradient(ellipse at 18% 18%, rgba(52, 105, 214, 0.2), transparent 42%),
+          radial-gradient(ellipse at 82% 82%, rgba(28, 177, 166, 0.12), transparent 38%),
+          #0b1220;
+      }
+
+      .card {
+        width: min(100%, 430px);
+        padding: 40px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: rgba(17, 27, 45, 0.88);
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(16px);
+      }
+
+      .icon {
+        width: 52px;
+        height: 52px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 26px;
+        border: 1px solid rgba(105, 158, 255, 0.28);
+        border-radius: 16px;
+        color: #9dc1ff;
+        background: rgba(55, 112, 221, 0.16);
+      }
+
+      .icon svg {
+        width: 25px;
+        height: 25px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(1.55rem, 5vw, 1.9rem);
+        letter-spacing: -0.035em;
+      }
+
+      .description {
+        margin: 12px 0 30px;
+        color: var(--muted);
+        font-size: 0.98rem;
+        line-height: 1.7;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      .input-wrap {
+        position: relative;
+      }
+
+      input {
+        width: 100%;
+        min-height: 54px;
+        padding: 0 52px 0 16px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        outline: none;
+        color: #f5f8ff;
+        background: rgba(6, 12, 23, 0.65);
+        font: inherit;
+        letter-spacing: 0.08em;
+        transition: border-color 150ms ease, box-shadow 150ms ease;
+      }
+
+      input::placeholder {
+        color: #75839a;
+        letter-spacing: normal;
+      }
+
+      input:focus {
+        border-color: #77a8ff;
+        box-shadow: 0 0 0 4px rgba(88, 143, 241, 0.17);
+      }
+
+      .toggle-visibility {
+        position: absolute;
+        top: 50%;
+        right: 8px;
+        width: 38px;
+        height: 38px;
+        display: grid;
+        place-items: center;
+        transform: translateY(-50%);
+        border: 0;
+        border-radius: 9px;
+        color: var(--muted);
+        background: transparent;
+        cursor: pointer;
+      }
+
+      .toggle-visibility:hover {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      .toggle-visibility svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .submit {
+        width: 100%;
+        min-height: 52px;
+        margin-top: 18px;
+        border: 0;
+        border-radius: 12px;
+        color: #08101d;
+        background: linear-gradient(110deg, #a9c9ff, #74e0d4);
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+        transition: filter 150ms ease, transform 150ms ease;
+      }
+
+      .submit:hover {
+        filter: brightness(1.06);
+      }
+
+      .submit:active {
+        transform: translateY(1px);
+      }
+
+      .submit:focus-visible,
+      .toggle-visibility:focus-visible {
+        outline: 2px solid #c4dcff;
+        outline-offset: 3px;
+      }
+
+      .message {
+        min-height: 24px;
+        margin: 14px 0 0;
+        color: #ffd38b;
+        font-size: 0.88rem;
+        line-height: 1.5;
+      }
+
+      @media (max-width: 480px) {
+        .card {
+          padding: 30px 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <div class="icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <rect x="5" y="10" width="14" height="11" rx="2.5" stroke="currentColor" stroke-width="1.7" />
+          <path d="M8 10V7a4 4 0 1 1 8 0v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+          <circle cx="12" cy="15" r="1.2" fill="currentColor" />
+        </svg>
+      </div>
+      <h1>กรอกรหัสเพื่อดำเนินการต่อ</h1>
+      <p class="description">ใส่รหัสผ่านเพื่อไปยังขั้นตอนถัดไป</p>
+
+      <form id="code-form">
+        <label for="access-code">รหัสผ่าน</label>
+        <div class="input-wrap">
+          <input
+            id="access-code"
+            name="code"
+            type="password"
+            placeholder="พิมพ์รหัสผ่าน"
+            autocomplete="current-password"
+            required
+            aria-describedby="form-message"
+          />
+          <button
+            class="toggle-visibility"
+            id="toggle-visibility"
+            type="button"
+            aria-label="แสดงรหัส"
+            aria-pressed="false"
+          >
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M2.5 12s3.2-6 9.5-6 9.5 6 9.5 6-3.2 6-9.5 6-9.5-6-9.5-6Z" stroke="currentColor" stroke-width="1.7" />
+              <circle cx="12" cy="12" r="2.5" stroke="currentColor" stroke-width="1.7" />
+            </svg>
+          </button>
+        </div>
+        <button class="submit" type="submit">ดำเนินการต่อ</button>
+        <p class="message" id="form-message" role="status" aria-live="polite"></p>
+      </form>
+    </main>
+
+    <script>
+      const form = document.querySelector("#code-form");
+      const codeInput = document.querySelector("#access-code");
+      const toggleButton = document.querySelector("#toggle-visibility");
+      const message = document.querySelector("#form-message");
+      const correctPassword = "20/7";
+
+      toggleButton.addEventListener("click", () => {
+        const showingCode = codeInput.type === "password";
+        codeInput.type = showingCode ? "text" : "password";
+        toggleButton.setAttribute("aria-pressed", String(showingCode));
+        toggleButton.setAttribute("aria-label", showingCode ? "ซ่อนรหัส" : "แสดงรหัส");
+      });
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (codeInput.value === correctPassword) {
+          window.location.href = "next.html";
+        } else {
+          message.textContent = "รหัสผ่านไม่ถูกต้อง กรุณาลองอีกครั้ง";
+          codeInput.select();
+        }
+      });
+
+      form.addEventListener("input", () => {
+        message.textContent = "";
+      });
+    </script>
+  </body>
+</html>
